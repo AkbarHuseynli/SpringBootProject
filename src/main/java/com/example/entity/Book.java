@@ -22,14 +22,18 @@ public class Book {
             strategy = GenerationType.IDENTITY
     )
 
+
     @Id
     Long id;
+
 
     @Column(name = "name", nullable = false, unique = true, length = 12)
     String name;
 
+
     @Column(name = "author", nullable = false)
     String author;
+
 
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     List<Review> reviews;

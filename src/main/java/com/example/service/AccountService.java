@@ -1,19 +1,18 @@
 package com.example.service;
 
+import com.example.dto.request.AccountRequestDTO;
+import com.example.dto.request.SignUpRequestDTO;
 import com.example.entity.Account;
-import com.example.repository.AccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.List;
 
-@Service
-public class AccountService {
+public interface AccountService {
 
-    @Autowired
-    private AccountRepository accountRepository;
+     void add(AccountRequestDTO accountRequestDTO);
+     Account add(SignUpRequestDTO signUpRequestDTO);
 
-    public List<Account> getAccountList() {
-        return accountRepository.findAll();
-    }
+     Account save(Account account);
 
+
+
+
+     
 }

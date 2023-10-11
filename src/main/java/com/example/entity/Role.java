@@ -20,8 +20,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "name", nullable = false)
-    String name;
+    @Column(name = "name")
+    @Enumerated(value = EnumType.STRING)
+    ERole role;
 
 //    @OneToOne
 //    @JoinColumn(name="account")

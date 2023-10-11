@@ -1,7 +1,7 @@
 package com.example.entity;
 
 import org.springframework.stereotype.Component;
-@Component
+//@Component
 public class AccountOne extends Account{
 
 //    public AccountOne(){

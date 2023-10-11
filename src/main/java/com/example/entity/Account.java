@@ -3,14 +3,12 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Getter
 @Setter
-@Component
-@ToString
 @Table(name = "account")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -29,17 +27,17 @@ public class Account {
     @Id
     Long id;
 
-    @Column(name = "username", nullable = false, unique = true, length = 12)
+    @Column(name = "username")
     String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     String password;
 
     @Column(name = "is_active", columnDefinition = "boolean default true")
     boolean isActive;
 
-//    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-//    Role role;
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    User user;
 
     @ManyToMany
     @JoinTable(
@@ -48,4 +46,10 @@ public class Account {
     )
     List<Role> roles;
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "isActive=" + isActive +
+                '}';
+    }
 }
